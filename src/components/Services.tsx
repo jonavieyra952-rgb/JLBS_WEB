@@ -21,18 +21,18 @@ import Zoom from "react-medium-image-zoom";
 // DATOS DE SERVICIOS
 // Rutas actualizadas apuntando a la carpeta "public/servicios"
 const services: ServiceItem[] = [
-  { id: 1, title: 'Seguridad Integral', description: 'Protección completa para tu empresa.', image: '/servicios/seguridadintegral.png', icon: Shield },
-  { id: 2, title: 'Elementos de Seguridad',  description: 'Personal capacitado y confiable.', image: '/servicios/elementosdesegu.png', icon: Users },
-  { id: 3, title: 'Monitoreo GPS', description: 'Rastreo satelital vehicular 24/7.', image: '/servicios/gps.jpg', icon: MapPin },
-  { id: 4, title: 'Asesoría Legal', description: 'Apoyo jurídico especializado.', image: '/servicios/asesoralegal.png', icon: Scale },
-  { id: 5, title: 'Servicio de Custodia', description: 'Protección en traslados de mercancía.', image: '/servicios/serviciocustodia.png', icon: Briefcase },
-  { id: 6, title: 'Telefonía Digital', description: 'Renta de equipos de comunicación.', image: '/servicios/renta_telefonia_digital.jpg', icon: Phone },
-  { id: 7, title: 'Equipo de Seguridad', description: 'Venta de equipo industrial.', image: '/servicios/ventadeequipo.png', icon: HardHat },
-  { id: 8, title: 'Instalaciones Eléctricas', description: 'Mantenimiento preventivo y correctivo.', image: '/servicios/mantenimiento_instalaciones_electricas.jpg', icon: Zap },
-  { id: 9, title: 'Distribuidor Autorizado', description: 'Socios oficiales de Syscom.', image: '/servicios/distribuidor_autorizado.jpg', icon: CheckCircle },
-  { id: 10, title: 'Casetas de Vigilancia', description: 'Infraestructura para control de acceso.', image: '/servicios/casetasvigilancia.png', icon: Home },
-  { id: 11, title: 'Renta de Vehículos', description: 'Flotilla disponible para servicios.', image: '/servicios/renta_vehiculos.jpg', icon: Car },
-  { id: 12, title: 'Instalación de Sistemas', description: 'CCTV, Alarmas y Biométricos.', image: '/servicios/instalaciondesistemas.png', icon: Settings },
+  { id: 1, title: 'Seguridad Integral', description: 'Protección para hogares, negocios y empresas.', image: '/servicios/seguridadintegral.webp', icon: Shield },
+  { id: 2, title: 'Elementos de Seguridad',  description: 'Personal capacitado y confiable.', image: '/servicios/elementosdesegu.webp', icon: Users },
+  { id: 3, title: 'Monitoreo GPS', description: 'Rastreo satelital vehicular 24/7.', image: '/servicios/gps.webp', icon: MapPin },
+  { id: 4, title: 'Asesoría Legal', description: 'Apoyo jurídico especializado.', image: '/servicios/asesoralegal.webp', icon: Scale },
+  { id: 5, title: 'Servicio de Custodia', description: 'Protección en traslados de mercancía.', image: '/servicios/serviciocustodia.webp', icon: Briefcase },
+  { id: 6, title: 'Telefonía Digital', description: 'Renta de equipos de comunicación.', image: '/servicios/renta_telefonia_digital.webp', icon: Phone },
+  { id: 7, title: 'Equipo de Seguridad', description: 'Venta de equipo industrial.', image: '/servicios/ventadeequipo.webp', icon: HardHat },
+  { id: 8, title: 'Instalaciones Eléctricas', description: 'Mantenimiento preventivo y correctivo.', image: '/servicios/mantenimiento_instalaciones_electricas.webp', icon: Zap },
+  { id: 9, title: 'Distribuidor Autorizado', description: 'Socios oficiales de Syscom.', image: '/servicios/distribuidor_autorizado.webp', icon: CheckCircle },
+  { id: 10, title: 'Casetas de Vigilancia', description: 'Infraestructura para control de acceso.', image: '/servicios/casetasvigilancia.webp', icon: Home },
+  { id: 11, title: 'Renta de Vehículos', description: 'Flotilla disponible para servicios.', image: '/servicios/renta_vehiculos.webp', icon: Car },
+  { id: 12, title: 'Instalación de Sistemas', description: 'CCTV, Alarmas y Biométricos.', image: '/servicios/instalaciondesistemas.webp', icon: Settings },
 ];
 
 export const Services: React.FC = () => {
@@ -117,6 +117,8 @@ export const Services: React.FC = () => {
                       <img
                         src={service.image}
                         alt={service.title}
+                        loading="lazy"
+                        decoding="async"
                         className="
                           max-w-full 
                           max-h-[480px] 

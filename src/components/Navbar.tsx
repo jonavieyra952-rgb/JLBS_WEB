@@ -7,11 +7,16 @@ const navItems: NavItem[] = [
   { label: "Quiénes Somos", href: "#quienes" },
   { label: "Misión", href: "#mision" },
   { label: "Servicios", href: "#servicios" },
+  { label: "Cámaras", href: "/camaras-de-seguridad-toluca/" },
   { label: "Productos", href: "#productos" },
   { label: "Contacto", href: "#contacto" },
 ];
 
-export const Navbar: React.FC = () => {
+type NavbarProps = {
+  onOpenQuote: () => void;
+};
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -42,7 +47,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* LOGO + MARCA ACTUALIZADA (SEGURIDAD PRIVADA) */}
-        <a href="#inicio" className="flex items-center gap-2 sm:gap-4 group z-50 relative">
+        <a href="/#inicio" className="flex items-center gap-2 sm:gap-4 group z-50 relative">
           {/* Contenedor de Imagen */}
           <div className={`relative bg-white rounded-xl shadow-lg flex items-center justify-center transition-all duration-300 ${
              scrolled ? "p-1.5" : "p-1.5 sm:p-2"
@@ -74,7 +79,7 @@ export const Navbar: React.FC = () => {
         </a>
 
         {/* MENÚ DESKTOP */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -85,12 +90,13 @@ export const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
-          <a
-            href="#contacto"
+          <button
+            type="button"
+            onClick={onOpenQuote}
             className="px-6 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-500/30 transform hover:-translate-y-0.5"
           >
             Cotizar
-          </a>
+          </button>
         </div>
 
         {/* BOTÓN MENÚ MÓVIL */}
@@ -98,6 +104,8 @@ export const Navbar: React.FC = () => {
           className="lg:hidden text-white hover:text-accent transition-colors p-2 z-50 rounded-full hover:bg-white/10"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -105,6 +113,7 @@ export const Navbar: React.FC = () => {
 
       {/* MENÚ MÓVIL */}
       <div
+        id="mobile-navigation"
         className={`fixed inset-0 bg-slate-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out lg:hidden ${
           isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         }`}
@@ -135,13 +144,16 @@ export const Navbar: React.FC = () => {
             ))}
           </div>
 
-          <a
-            href="#contacto"
-            onClick={() => setIsOpen(false)}
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+              onOpenQuote();
+            }}
             className="mt-8 px-12 py-4 rounded-full bg-accent text-white text-xl font-bold hover:bg-cyan-500 transition-all shadow-xl hover:shadow-cyan-500/40 w-full max-w-xs transform active:scale-95"
           >
             Cotizar Ahora
-          </a>
+          </button>
         </div>
       </div>
     </nav>

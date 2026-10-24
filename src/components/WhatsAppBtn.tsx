@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { trackWhatsAppClick } from '../lib/analytics';
 
-export const WhatsAppBtn: React.FC = () => {
+type WhatsAppBtnProps = {
+  message?: string;
+  source?: string;
+};
+
+export const WhatsAppBtn: React.FC<WhatsAppBtnProps> = ({
+  message = 'Hola JLBS Servicios, quisiera más información.',
+  source = 'floating_whatsapp',
+}) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
@@ -30,13 +39,14 @@ export const WhatsAppBtn: React.FC = () => {
         }`}
       >
         <span>👋</span>
-        <span>¿Hola! En qué podemos ayudarte?</span>
+        <span>¡Hola! ¿En qué podemos ayudarte?</span>
       </div>
       
       <a
-        href="https://wa.me/527222200018?text=Hola%20JLBS%20Servicios,%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
+        href={`https://wa.me/527222200018?text=${encodeURIComponent(message)}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackWhatsAppClick(source)}
         className="relative group flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#20bd5a] rounded-full shadow-lg hover:shadow-[#25D366]/40 transition-all duration-300 transform hover:-translate-y-1"
         aria-label="Contactar por WhatsApp"
       >

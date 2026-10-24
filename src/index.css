@@ -1,12 +1,34 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Oculta cualquier barra mientras está abierta la ventana de cotización.
+   El desplazamiento sigue funcionando con rueda, trackpad, teclado y táctil. */
+html.quote-modal-open,
+html.quote-modal-open body {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html.quote-modal-open *,
+html.quote-modal-open *::before,
+html.quote-modal-open *::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html.quote-modal-open::-webkit-scrollbar,
+html.quote-modal-open body::-webkit-scrollbar,
+html.quote-modal-open *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 /* --- ANIMACIONES PERSONALIZADAS --- */

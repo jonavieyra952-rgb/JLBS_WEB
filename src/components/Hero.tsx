@@ -15,27 +15,27 @@ import 'swiper/css/navigation';
 const baseItems = [
   { 
     title: "Biométricos", 
-    img: "/hero/biometrico.png" 
+    img: "/hero/biometrico.webp" 
   },
   { 
     title: "Cámaras de Seguridad", 
-    img: "/hero/camara.png" 
+    img: "/hero/camara.webp" 
   },
   { 
     title: "Rastreo GPS", 
-    img: "/hero/gps.png" 
+    img: "/hero/gps.webp" 
   },
   { 
     title: "Monitores", 
-    img: "/hero/monitor.png" 
+    img: "/hero/monitor.webp" 
   },
   { 
     title: "Routers y Switches", 
-    img: "/hero/router.png" 
+    img: "/hero/router.webp" 
   },
   { 
     title: "Accesorios y Cables", 
-    img: "/hero/cable.png" 
+    img: "/hero/cable.webp" 
   },
 ];
 
@@ -53,8 +53,9 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop"
-            alt="Seguridad Background"
+            alt=""
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/90 to-primary/60"></div>
         </div>
@@ -77,7 +78,7 @@ export const Hero: React.FC = () => {
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
                 Seguridad Integral <br className="hidden lg:block" />
-                <span className="text-accent block mt-2">Confíanza y Tecnología</span>
+                <span className="text-accent block mt-2">Confianza y Tecnología</span>
               </h1>
             </div>
 
@@ -86,13 +87,19 @@ export const Hero: React.FC = () => {
               Protegemos lo que más te importa con soluciones avanzadas en vigilancia, control de acceso y personal altamente capacitado.
             </p>
             
-            {/* Botón Servicios */}
-            <div className="flex justify-center lg:justify-start pt-4">
+            {/* Acciones principales */}
+            <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row lg:justify-start">
               <a
                 href="#servicios"
-                className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full bg-accent text-white font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-500/50 flex items-center justify-center gap-2 transform hover:-translate-y-1 text-base md:text-lg"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:-translate-y-1 hover:bg-cyan-600 hover:shadow-cyan-500/50 sm:w-auto"
               >
                 Nuestros Servicios <ChevronRight size={20} />
+              </a>
+              <a
+                href="/camaras-de-seguridad-toluca/"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15 sm:w-auto"
+              >
+                Cámaras para tu hogar <ChevronRight size={20} />
               </a>
             </div>
           </div>
@@ -151,6 +158,8 @@ export const Hero: React.FC = () => {
                               <img 
                                 src={item.img} 
                                 alt={item.title} 
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 onError={(e) => {
                                     // Fallback por si la imagen local no existe aún
@@ -206,6 +215,7 @@ export const Hero: React.FC = () => {
           <img
             src={selectedImage}
             alt="Vista ampliada"
+            decoding="async"
             className="w-auto h-auto max-w-full max-h-[85vh] md:max-h-[90vh] rounded-lg shadow-2xl object-contain animate-scale-up"
             onClick={(e) => e.stopPropagation()} 
           />

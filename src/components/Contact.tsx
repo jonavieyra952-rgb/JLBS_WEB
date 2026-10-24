@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, Terminal, ShieldCheck, FileText, BadgeCheck } from 'lucide-react';
+import { openCookieSettings, trackPhoneClick } from '../lib/analytics';
 
 export const Contact: React.FC = () => {
   const email = "seguridad@jlbservicios.com";
@@ -37,8 +38,8 @@ export const Contact: React.FC = () => {
 
             {/* Redes Sociales */}
             <div className="flex gap-3">
-              <a href="https://www.facebook.com/people/JLBS-servicios/61566738910445/" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all duration-300"><Facebook size={18} /></a>
-              <a href="https://www.instagram.com/jlbs_servicios" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-pink-600 transition-all duration-300"><Instagram size={18} /></a>
+              <a href="https://www.facebook.com/people/JLBS-servicios/61566738910445/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de JLBS Servicios" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all duration-300"><Facebook size={18} /></a>
+              <a href="https://www.instagram.com/jlbs_servicios" target="_blank" rel="noopener noreferrer" aria-label="Instagram de JLBS Servicios" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-pink-600 transition-all duration-300"><Instagram size={18} /></a>
             </div>
 
             {/* INFORMACIÓN LEGAL (RAZÓN SOCIAL Y CERTIFICACIONES) - TAMAÑO AUMENTADO Y POPPINS */}
@@ -94,7 +95,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-0.5">Llámanos</span>
-                  <a href="tel:7222200018" className="text-lg font-bold text-slate-200 hover:text-white transition-colors">722 220 0018</a>
+                  <a href="tel:+527222200018" onClick={() => trackPhoneClick('footer')} className="text-lg font-bold text-slate-200 hover:text-white transition-colors">722 220 0018</a>
                 </div>
               </div>
 
@@ -153,10 +154,16 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* --- COPYRIGHT Y CRÉDITOS FINALES --- */}
-        <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-white/5 pt-10 flex flex-col xl:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-xs font-medium tracking-tight text-center md:text-left">
             © {new Date().getFullYear()} JLBS Servicios S.A. de C.V. <span className="mx-2 opacity-30">|</span> Todos los derechos reservados.
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-400">
+            <a href="/aviso-de-privacidad/" className="transition hover:text-white">Aviso de privacidad</a>
+            <button type="button" onClick={openCookieSettings} className="transition hover:text-white">Preferencias de cookies</button>
+            <a href="/camaras-de-seguridad-toluca/" className="transition hover:text-white">Cámaras para hogares</a>
+          </div>
 
           <div className="flex items-center gap-4 bg-white/[0.03] px-5 py-2.5 rounded-full border border-white/5">
             <div className="flex items-center gap-2 text-[10px] text-slate-400">
